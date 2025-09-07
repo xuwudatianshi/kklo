@@ -2,10 +2,9 @@ on: push
 
 jobs:
   job1:
-    runs-on: ubantu-latest
+    runs-on: windows-latest
     steps:
       - run: pwd
       - run: npm -version
       - run: npm install
       - run: npm run build
-       
