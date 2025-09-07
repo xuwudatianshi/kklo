@@ -31,7 +31,7 @@ jobs:
           password: kakaxi1998.
       
       - name: 构建并推送到docker
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@latest
         with:
           push: true
           tags: lilebin/vue-app
