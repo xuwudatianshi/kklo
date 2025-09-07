@@ -27,8 +27,8 @@ jobs:
       - name: 登录dockerhub
         uses: docker/login-action@v3 
         with: 
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          username: lilebin
+          password: kakaxi1998.
       
       - name: 构建并推送到docker
         uses: docker/build-push-action@v5
