@@ -1,4 +1,4 @@
-name: docker成功导入build后
+name: docker创建Dockerfile目录
 on: push
 
 # permissions:
@@ -6,7 +6,7 @@ on: push
 
 jobs:
   npm-build:
-    name: npm-build工作
+    name: npm-build工作s
     runs-on: ubuntu-latest
     steps:
       - name: 读取仓库内容
