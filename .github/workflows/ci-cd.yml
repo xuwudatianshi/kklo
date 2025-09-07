@@ -4,6 +4,7 @@ jobs:
   job1:
     runs-on: windows-latest
     steps:
+      - uses: actions/checkout@v4
       - run: pwd
       - run: npm -version
       - run: npm install
