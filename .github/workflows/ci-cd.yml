@@ -11,14 +11,26 @@ jobs:
       - name: 读取仓库内容
         uses: actions/checkout@v4
       
-      - name: 安装依赖
-        run: npm install
+      # - name: 安装依赖
+      #   run: npm install
 
-      - name: 项目打包s
-        run: npm run build
+      # - name: 项目打包s
+      #   run: npm run build
 
-      - name: 部署
-        uses: JamesIves/github-pages-deploy-action@v4
+      # - name: 部署
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   with:
+      #     branch: gh-pages
+      #     folder: dist
+
+      - name: 登录dockerhub
+        uses: docker/login-action@v3 
+        with: 
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      
+      - name: 构建并推送到docker
+        uses: docker/build-push-action@v5
         with:
-          branch: gh-pages
-          folder: dist
+          push: true
+          tags: lilebin/vue-app:latest
