@@ -1,26 +1,28 @@
-name: Deploy Vue to Aliyun Windows Server
+name: Deploy Vue to Windows FTP Server
 
 on:
   push:
     branches:
-      - main   # 推送到 main 分支时触发
+      - main   # 推送到 main 分支时触发部署
 
 jobs:
   build-and-deploy:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       # 1. 拉取代码
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 4. 将 dist 上传到服务器
-      - name: 更新文件到服务器
-        uses: appleboy/scp-action@v0.1.7
+
+      # 4. 部署到 Windows FTP 服务器
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          host: ${{ secrets.SSH_HOST }}
+          server: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
-          port: ${{ secrets.SSH_PORT }}
-          source: "dist/*"
-          target: "C:/inetpub/wwwroot/vue-app"
+          port: ${{ secrets.FTP_PORT }}
+          protocol: ftp
+          local-dir: dist
+          server-dir: /llx
