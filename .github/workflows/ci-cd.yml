@@ -1,4 +1,4 @@
-# 开放ftp3003端口
+# 开放ftp3001/3099端口，被动模式端口不固定
 name: Deploy Vue to Windows FTP Server
 
 on:
